@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; width: 1280px; }
+  .slide { width: 1280px; height: 720px; page-break-after: always; position: relative; padding: 70px 90px; display: flex; flex-direction: column; justify-content: center; background: #0b0f1a; color: #e8ecf4; }
+  .slide.light { background: #f4f6fa; color: #12141c; }
+  h1 { font-size: 66px; line-height: 1.06; letter-spacing: -1.5px; }
+  h2 { font-size: 42px; margin-bottom: 26px; letter-spacing: -1px; }
+  h3 { font-size: 24px; margin-bottom: 10px; }
+  p, li { font-size: 21px; line-height: 1.45; }
+  .tag { color: #14f195; font-weight: 700; font-size: 19px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; }
+  .light .tag { color: #9945ff; }
+  ul { margin-left: 24px; }
+  li { margin-bottom: 10px; }
+  .cols { display: flex; gap: 36px; }
+  .col { flex: 1; }
+  .card { background: #141a2a; border: 1px solid #232c44; border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+  .light .card { background: #fff; border-color: #dfe3ee; }
+  .num { font-size: 42px; font-weight: 800; color: #14f195; }
+  .light .num { color: #9945ff; }
+  .small { font-size: 16px; color: #8b93a7; margin-top: 6px; }
+  .light .small { color: #5d6577; }
+  .quote { font-size: 22px; line-height: 1.5; font-style: italic; border-left: 4px solid #14f195; padding-left: 22px; color: #c9d2e4; }
+  .light .quote { color: #3a4152; border-color: #9945ff; }
+  .footer { position: absolute; bottom: 30px; left: 90px; right: 90px; display: flex; justify-content: space-between; font-size: 14px; color: #5d6577; }
+  .src { font-size: 13.5px; color: #7d8598; margin-top: 8px; line-height: 1.4; }
+  .hl { color: #14f195; font-weight: 700; }
+  .light .hl { color: #7a2ff0; font-weight: 700; }
+  .dim { color: #8b93a7; }
+</style></head>
+<body>
+
+<!-- 1 TITLE -->
+<div class="slide">
+  <div class="tag">Colosseum Hackathon Idea · Solana · September 2026</div>
+  <h1>Matchbook</h1>
+  <p style="font-size:30px; margin-top:18px; color:#aeb8cc;">The settlement-truth layer for Solana payments:<br><span class="hl">every transfer knows its invoice.</span></p>
+  <p style="margin-top:40px; font-size:19px; color:#5d6577;">problemStatement · technicalApproach · targetAudience · businessModel · competitiveLandscape</p>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>1 / 10</span></div>
+</div>
+
+<!-- 2 PROBLEM -->
+<div class="slide light">
+  <div class="tag">problemStatement</div>
+  <h2>$650B/month moves on Solana. Reconciling it is still manual.</h2>
+  <div class="cols">
+    <div class="col" style="flex:1.2">
+      <p style="margin-bottom:18px;">On Solana, money moves at 400ms — but <b>bookkeeping lives in 2009</b>. Businesses and DAOs that pay in USDC face a problem the ecosystem itself has named:</p>
+      <div class="quote">"Businesses using crypto for accounts payable and receivable face a reconciliation problem: verifying which invoice corresponds to which on-chain transfer."</div>
+      <p class="small">— Solana Compass, Request Network profile (solanacompass.com/projects/request-network)</p>
+      <p style="margin-top:18px;">Every payroll batch, vendor payment and agent purchase ends the same way: a finance person (or a script) eyeballing memos, guessing which transfer settles which invoice — then chasing the mismatches.</p>
+    </div>
+    <div class="col">
+      <div class="card"><div class="num">6M</div><p class="small">monthly USDC senders on Solana (Artemis, Aug 2026)</p></div>
+      <div class="card"><div class="num">$650B</div><p class="small">monthly adjusted stablecoin volume, Feb 2026 — highest of any chain (Everstake/Artemis)</p></div>
+      <div class="card"><div class="num">$0</div><p class="small">spent today on auto-reconciliation by the typical DAO or SMB paying in USDC — the work is spreadsheets and eyeballs</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>2 / 10</span></div>
+</div>
+
+<!-- 3 WHY NOW -->
+<div class="slide">
+  <div class="tag">why now — evidence from primary research</div>
+  <h2>Three signals say the market is ready</h2>
+  <div class="card"><h3>1 · The incumbent left</h3>
+  <p>Sablier wound down its Solana streaming product (UI claiming-only June 2026, maintenance mode July 2026). Payroll teams consolidated onto Streamflow — <span class="hl">24,000+ projects, $1.6B TVL</span> — with no invoicing or reconciliation layer attached. (blog.sablier.com/solana-shutdown; crypto.news)</p></div>
+  <div class="card"><h3>2 · The gap is acknowledged, not solved</h3>
+  <p>Request Finance (EVM-origin, $300–1,500/mo, Solana added 2024) is the only suite touching this, and its own docs name reconciliation as the unsolved core. Privacy-payroll demand proof: Request × Aleo processed <span class="hl">$3.7M in weeks</span> of launch. (solanacompass.com/projects/request-finance)</p></div>
+  <div class="card"><h3>3 · Machine payments just shipped without receipts</h3>
+  <p>x402 settled 167M+ transactions by May 2026 — but real commerce is only ~$28K/day, and the spec defines <span class="hl">no refunds, disputes, or receipt binding</span>. The x402 Foundation's ROADMAP.md is an empty placeholder. Agents paying APIs have no paper trail. (docs.x402.org; github.com/x402-foundation/x402; presenc.ai tracker)</p></div>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>3 / 10</span></div>
+</div>
+
+<!-- 4 SOLUTION -->
+<div class="slide light">
+  <div class="tag">solution — three primitives</div>
+  <h2 style="font-size:38px;">Matchbook = Proof-of-Invoice + Auto-match + Dispute rails</h2>
+  <div class="card" style="padding:18px 24px; margin-bottom:12px;"><h3 style="font-size:22px;">① Proof-of-Invoice binding</h3>
+  <p style="font-size:19px;">A Token-2022 <b>transfer-hook program</b> + Pay/memo convention that embeds a canonical invoice hash into the transfer itself. The binding is enforced by the protocol at settlement time — not typed in afterwards by a bookkeeper. Impossible to do this way on EVM; native to Solana.</p></div>
+  <div class="card" style="padding:18px 24px; margin-bottom:12px;"><h3 style="font-size:22px;">② Auto-match engine</h3>
+  <p style="font-size:19px;">An indexer that watches bound transfers and your ledger (QuickBooks/Xero export or plain CSV), then matches invoice ↔ payment ↔ payout batch in real time. Sub-second settlement on Solana means reconciliation happens <i>with</i> the payment, not weeks later. Exposed as a web app + API + webhooks.</p></div>
+  <div class="card" style="padding:18px 24px; margin-bottom:0;"><h3 style="font-size:22px;">③ Dispute &amp; refund rails</h3>
+  <p style="font-size:19px;">A small escrow PDA (program-derived account) holds payment state per invoice: <span class="hl">partial payments, refund windows, dispute flags</span> — the TradFi primitives stablecoin invoicing never had. Same rails serve x402-style agent purchases that today have no recourse path.</p></div>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>4 / 10</span></div>
+</div>
+
+<!-- 5 TECHNICAL -->
+<div class="slide">
+  <div class="tag">technicalApproach</div>
+  <h2>Buildable in one hackathon — three components, all boring by design</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="card"><h3>Anchor program</h3>
+      <p style="font-size:19px;">Token-2022 transfer hook (Rust/Anchor): verifies invoice hash exists in a Matchbook registry PDA before allowing transfer of a configured mint. Fallback mode: Pay-protocol memo parsing for wallets that skip hooks. ~600 LOC, testable on validator locally.</p></div>
+      <div class="card"><h3>Indexer + matcher</h3>
+      <p style="font-size:19px;">Geyser/websocket stream → Postgres → deterministic matcher (invoice hash exact match first, amount+payee heuristic second, confidence score surfaced). Serves REST + webhooks.</p></div>
+    </div>
+    <div class="col">
+      <div class="card"><h3>Dispute PDA</h3>
+      <p style="font-size:19px;">Escrow account per invoice: partial-pay state machine (partial → complete → disputed → refunded). Refund = signed claim back to source; dispute = freeze + evidence hash attached. Deliberately minimal — no oracle, no court.</p></div>
+      <div class="card"><h3>Hackathon scope (5 days)</h3>
+      <p style="font-size:19px;">Day 1–2 hook program + local tests → Day 3 indexer + matcher demo → Day 4 QuickBooks CSV round-trip → Day 5 x402 receipt demo: agent buys an API call, receipt reconciles itself. All on devnet, all open source.</p></div>
+    </div>
+  </div>
+  <p class="src">Reuses proven Solana building blocks: Token-2022 hooks (shipping since 2024), Geyser plugins, Anchor. No new consensus, no oracle dependency.</p>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>5 / 10</span></div>
+</div>
+
+<!-- 6 AGENT EXTENSION -->
+<div class="slide light">
+  <div class="tag">the wedge nobody is building: receipts for machine payments</div>
+  <h2>Agents settle in USDC but leave no paper trail</h2>
+  <div class="cols">
+    <div class="col">
+      <p style="margin-bottom:16px;">2026 shipped the rails: Pay.sh (Solana Foundation × Google Cloud, May 2026), x402 on SVM, Circle Agent Stack with $0.000001 nanopayments. What none of them define:</p>
+      <ul>
+        <li><b>Receipts</b> — a payment record a finance system (human or agent) can consume</li>
+        <li><b>Refunds/disputes</b> — push-based payments with zero recourse</li>
+        <li><b>Budget reconciliation</b> — an agent with a $50/day mandate can't produce a matched expense log</li>
+      </ul>
+      <p style="margin-top:16px;">The same three Matchbook primitives solve this. <span class="hl">Human AP teams and AI agents need the identical thing: settlement truth.</span></p>
+    </div>
+    <div class="col">
+      <div class="card"><p class="small" style="margin-bottom:10px;">Skyfire — $9.5M raised, Coinbase Ventures &amp; a16z — <b>ceased operations early 2026</b> chasing proprietary agent identity. Lesson: the open layer everyone needs is not identity, it's the boring ledger. (archtools.dev migration post, Mar 2026)</p></div>
+      <div class="card"><p class="small">Chainalysis counted <b>100M+ agentic transactions on Base</b> through Q1 2026 — but notes most was farming bots, real commerce ~$28K/day. Speculation happens because real business rails don't. Receipts + disputes are what converts bot traffic into actual commerce. (chainalysis.com x402 adoption, Jun 2026)</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>6 / 10</span></div>
+</div>
+
+<!-- 7 AUDIENCE -->
+<div class="slide">
+  <div class="tag">targetAudience</div>
+  <h2>Who feels this pain weekly</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="card"><h3>DAO ops &amp; crypto-native companies</h3>
+      <p style="font-size:19px;">Streamflow's 24,000+ projects pay contributors in batches today. Their finance workflow: export CSV, match by hand, hope. Matchbook plugs in as a webhook from day one.</p></div>
+      <div class="card"><h3>Agencies &amp; offshore teams</h3>
+      <p style="font-size:19px;">Stablecoin contractor pay is now mainstream — Gusto added USDC same-day contractor payouts (Mar 2026), Sphere runs recurring billing GA. Finance teams inherit the reconciliation problem at scale.</p></div>
+    </div>
+    <div class="col">
+      <div class="card"><h3>API businesses serving agents</h3>
+      <p style="font-size:19px;">MCP/x402 API sellers (Cloudflare workers, Arch Tools' 63-tool marketplace) need receipt + refund rails before serious buyers trust agent-driven spend.</p></div>
+      <div class="card"><h3>First user: me</h3>
+      <p style="font-size:19px;">This submission's author operates AI agents that pay for API services and would integrate Matchbook as its own expense ledger at MVP. The ideathon guide's "be user number 1" is literal here.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>7 / 10</span></div>
+</div>
+
+<!-- 8 BUSINESS -->
+<div class="slide light">
+  <div class="tag">businessModel</div>
+  <h2>Priced like the spreadsheet it replaces</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="card"><h3>SaaS tiers</h3>
+      <p style="font-size:19px;">Free: 50 matched transfers/mo, devnet, public API.<br><b>Team $49/mo</b>: unlimited matching, QuickBooks/Xero sync, webhooks, dispute console.<br><b>Enterprise</b>: custom mints, private indexer, SOC 2 track (Request Finance charges $300–1,500/mo for the suite — room to undercut with focus).</p></div>
+      <div class="card"><h3>Dispute-rail fees</h3>
+      <p style="font-size:19px;">0.1% on value settled through escrow PDA (refunds, partial payments, x402 receipt flows). At $650B/mo chain volume, capturing even 0.001% of B2B flows is $6.5M/yr run-rate.</p></div>
+    </div>
+    <div class="col">
+      <div class="card"><h3>Why this compounds</h3>
+      <p style="font-size:19px;">Reconciliation data is the wedge; the ledger it creates becomes the accounting system of record for stablecoin-native businesses — and the only structured expense data source for the agent economy. Data network effects: more matched payments → better heuristics → more matching.</p></div>
+      <div class="card"><h3>Beachhead GTM</h3>
+      <p style="font-size:19px;">Streamflow + Sphere user base as distribution partners; publish the invoice-hash convention as an open standard other Solana payment tools adopt (network standard beats proprietary — the Skyfire lesson).</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>8 / 10</span></div>
+</div>
+
+<!-- 9 COMPETITION -->
+<div class="slide">
+  <div class="tag">competitiveLandscape</div>
+  <h2>Everyone touches payments. Nobody owns settlement truth.</h2>
+  <table style="width:100%; border-collapse:collapse; font-size:19px;">
+    <tr style="color:#14f195; text-align:left;">
+      <th style="padding:12px 10px; border-bottom:1px solid #232c44;">Player</th>
+      <th style="padding:12px 10px; border-bottom:1px solid #232c44;">What they do</th>
+      <th style="padding:12px 10px; border-bottom:1px solid #232c44;">What they don't do</th>
+    </tr>
+    <tr><td style="padding:12px 10px; border-bottom:1px solid #1a2136;"><b>Request Finance</b></td><td style="padding:12px 10px; border-bottom:1px solid #1a2136;">Full crypto AP/AR suite, QB/Xero sync, Solana since 2024, $1.2B volume</td><td style="padding:12px 10px; border-bottom:1px solid #1a2136;">EVM-origin, $300+/mo, no Solana-native binding, no agent receipts</td></tr>
+    <tr><td style="padding:12px 10px; border-bottom:1px solid #1a2136;"><b>Streamflow</b></td><td style="padding:12px 10px; border-bottom:1px solid #1a2136;">Payroll streaming + batch payouts, 24k projects</td><td style="padding:12px 10px; border-bottom:1px solid #1a2136;">No invoicing, no reconciliation, no disputes</td></tr>
+    <tr><td style="padding:12px 10px; border-bottom:1px solid #1a2136;"><b>MoonPay Commerce (ex-Helio)</b></td><td style="padding:12px 10px; border-bottom:1px solid #1a2136;">Merchant checkout, $1.5B processed, Shopify</td><td style="padding:12px 10px; border-bottom:1px solid #1a2136;">Point-of-sale focus; leaves books to the merchant</td></tr>
+    <tr><td style="padding:12px 10px; border-bottom:1px solid #1a2136;"><b>x402 / Pay.sh / Circle Agent Stack</b></td><td style="padding:12px 10px; border-bottom:1px solid #1a2136;">Machine payment rails, nanopayments</td><td style="padding:12px 10px; border-bottom:1px solid #1a2136;">No receipts, refunds, or disputes defined — roadmap empty</td></tr>
+    <tr><td style="padding:12px 10px;"><b>GhostPay-B2B, StealthBooks</b></td><td style="padding:12px 10px;">Hackathon-grade B2B tools on GitHub</td><td style="padding:12px 10px;">Not production; confirms demand, no protocol binding</td></tr>
+  </table>
+  <p style="margin-top:22px;"><span class="hl">Matchbook's moat</span> is the Solana-specific binding primitive: Token-2022 transfer hooks make invoice-binding a protocol property, not a SaaS feature — a wedge EVM-origin competitors can't retrofit without an indexer rewrite.</p>
+  <div class="footer"><span>Matchbook — IDEATHON submission</span><span>9 / 10</span></div>
+</div>
+
+<!-- 10 CLOSE -->
+<div class="slide light">
+  <div class="tag">summary</div>
+  <h2>Matchbook: make every USDC transfer settle its own books</h2>
+  <div class="cols">
+    <div class="col">
+      <ul style="margin-left:22px;">
+        <li><b>Problem:</b> named-by-the-ecosystem reconciliation gap across 6M monthly senders</li>
+        <li><b>Approach:</b> Token-2022 hook binding + indexer matcher + dispute PDA — shippable in a 5-day hackathon on proven primitives</li>
+        <li><b>Audience:</b> DAOs and agencies paying in USDC, then the agent economy</li>
+        <li><b>Business:</b> $49/mo SaaS + 0.1% dispute-rail fee, open-standard convention as moat</li>
+        <li><b>Landscape:</b> incumbents (Request, Streamflow, x402 rails) all adjacent, none own it</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="card"><p class="small">Every claim in this deck traces to a primary source gathered this week: solanacompass.com, docs.x402.org, github.com/x402-foundation/x402, chainalysis.com, crypto.news, blog.sablier.com, gusto.com, solana.com, archtools.dev, everstake.one, presenc.ai, madeonsol.com. Research compiled 2026-09-04.</p></div>
+      <div class="card"><p style="font-size:24px;"><b>Be user number 1:</b> the author's AI agents pay for API services weekly and will run Matchbook as their expense ledger from MVP day.</p></div>
+    </div>
+  </div>
+  <div class="footer"><span>Matchbook — IDEATHON submission · Superteam Ukraine</span><span>10 / 10</span></div>
+</div>
+
+</body></html>
