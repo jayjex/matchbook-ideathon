@@ -92,3 +92,6 @@ No new consensus, no oracle dependency, no proprietary protocol — all componen
 - Request Finance × Aleo ZK payroll ($3.7M in weeks): solanacompass.com/projects/request-finance
 
 *All figures as reported by the linked sources in 2025–2026 coverage; compiled 2026-09-04.*
+---
+
+**[Matchbook Labs catalog](https://goblin-grub.github.io/matchbook-labs/)** — one page linking every Matchbook Labs product, MCP server, and repo.
